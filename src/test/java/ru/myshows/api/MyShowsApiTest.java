@@ -26,4 +26,12 @@ public class MyShowsApiTest {
         MyShowsApi myShowsApi = new MyShowsApi("demo", "fe01ce2a7fbac8fafaed7c982a04e229");
         System.out.println(myShowsApi.getUnwatchedEpisodes());
     }
+
+    @Test
+    public void testCheckEpisode() throws Exception {
+        MyShowsApi myShowsApi = new MyShowsApi("demo", "fe01ce2a7fbac8fafaed7c982a04e229");
+        //can't check the status after checking for now
+        myShowsApi.checkEpisode(291461);
+
+    }
 }

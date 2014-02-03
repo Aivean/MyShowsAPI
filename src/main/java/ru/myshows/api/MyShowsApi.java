@@ -38,6 +38,14 @@ public class MyShowsApi {
         return deserializer.unwatchedEpisodesMap(get(buildRequest("/profile/episodes/unwatched/")));
     }
 
+    public void checkEpisode(int episodeId) {
+        get(buildRequest("/profile/episodes/check/"+episodeId));
+    }
+
+    public void uncheckEpisode(int episodeId){
+        get(buildRequest("/profile/episodes/uncheck/"+episodeId));
+    }
+
     String get(String url) {
         logger.info("Requesting " + url);
         for (int tryN = 0; tryN < NTRIES; tryN++) {
