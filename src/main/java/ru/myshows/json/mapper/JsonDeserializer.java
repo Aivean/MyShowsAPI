@@ -3,6 +3,7 @@ package ru.myshows.json.mapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.myshows.api.BrokenApiException;
+import ru.myshows.json.model.Episode;
 import ru.myshows.json.model.Show;
 
 import java.io.IOException;
@@ -23,6 +24,15 @@ public class JsonDeserializer {
             });
         } catch (IOException e) {
             throw new BrokenApiException("Can't deserialize Shows list", e);
+        }
+    }
+
+    public Map<Integer, Episode> unwatchedEpisodesMap(String str){
+        try {
+            return objectMapper.readValue(str, new TypeReference<Map<Integer, Episode>>() {
+            });
+        } catch (IOException e) {
+            throw new BrokenApiException("Can't deserialize unwatched Episodes list", e);
         }
     }
 

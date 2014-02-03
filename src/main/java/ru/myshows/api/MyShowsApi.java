@@ -3,6 +3,7 @@ package ru.myshows.api;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.log4j.Logger;
 import ru.myshows.json.mapper.JsonDeserializer;
+import ru.myshows.json.model.Episode;
 import ru.myshows.json.model.Show;
 
 import java.io.IOException;
@@ -31,6 +32,10 @@ public class MyShowsApi {
 
     public Map<Integer, Show> getShows() {
         return deserializer.showsMap(get(buildRequest("/profile/shows/")));
+    }
+
+    public Map<Integer, Episode> getUnwatchedEpisodes(){
+        return deserializer.unwatchedEpisodesMap(get(buildRequest("/profile/episodes/unwatched/")));
     }
 
     String get(String url) {
